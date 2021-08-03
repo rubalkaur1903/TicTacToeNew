@@ -1,0 +1,80 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+html, body {
+    height: 100%;
+}
+
+body {
+    display: grid;
+    place-items: center;
+    background: rgb(216, 195, 238);
+}
+
+#game {
+    background: rgb(167, 109, 226);
+    border-radius: 10px;
+    padding-bottom: 20px;
+}
+
+h1 {
+    color: rgb(76, 6, 146);
+    font-family:Arial, Helvetica, sans-serif;
+    text-align: center;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+#board {
+    display: grid;
+    margin-top: 24px;
+    grid-template-rows: repeat(3, 64px);
+    grid-template-columns: repeat(3, 64px);
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.cell {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    background-color: rgb(202, 177, 226);
+    font-size: 5vh;
+    background: rgb(167, 109, 226);
+    
+}
+
+#board .cell:nth-of-type(n+4):nth-of-type(-n+6) {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+  }
+  
+#board .cell:nth-of-type(3n+2) {
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+  }
+
+.cell-content {
+    color: burlywood;
+}
+.cell:hover {
+    background-color: rgb(139, 75, 202);
+}
+.player {
+    display: flex;
+    justify-content: space-evenly;
+}
+#restart {
+    text-align: center;
+    padding-top: 10px;
+}
+#player-turn {
+    padding: 10px;
+    background-color: rgb(111, 43, 173);
+    border-radius: 10px;
+    margin: 20px;
+}
+ 
