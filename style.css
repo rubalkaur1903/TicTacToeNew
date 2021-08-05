@@ -73,8 +73,16 @@ h1 {
 }
 #player-turn {
     padding: 10px;
-    background-color: rgb(111, 43, 173);
+    background-color: rgb(168, 59, 201);
     border-radius: 10px;
     margin: 20px;
 }
- 
+#winner-message {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin: 20px;
+    padding: 10px;
+    color: rgb(240, 210, 89);
+    border-radius: 20px;
+}
