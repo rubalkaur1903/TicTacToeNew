@@ -1,6 +1,6 @@
 
 let board = ['', '', '', '', '', '', '', '', ''];
-const players = ['', ''];
+let players = ['', ''];
 
 let currentPlayer = 'X';
 let isGameActive = true;
@@ -47,12 +47,11 @@ const renderRestart = () => {
     `
 }
 const render = () => {
-    renderRestart();
     renderPlayer();
+    renderRestart();
 }
 //***************** TRIGGERING ON EACH TURN CLICK *****************
 const checkWin = () => {
-    console.log('X won')
     let winningCombination = [
         [0, 1, 2],
         [3, 4, 5],
@@ -65,23 +64,19 @@ const checkWin = () => {
     ]
     let roundWon = false;
     for (let i = 0; i <= winningCombination.length; i++) {
-        // const winningCondition = winningCombination[i];
         let a = winningCombination[i][0];
         let b = winningCombination[i][1];
         let c = winningCombination[i][2];
         console.log(a, b, c)
         if (a === '' || b === '' || c === '') {
-            console.log('empty spot')
             continue;
         } 
         if ( a === b && b === c) {
-            console.log('winningCombination')
             roundWon = true;
             break;
         }
     }
     if (roundWon) {
-        console.log('winningMessage')
         gameStatusElem.innerHTML = winningMessage();
         isGameActive = false;
         return;
@@ -136,7 +131,11 @@ playerTurnElem.addEventListener('click', function(event) {
 });
 
 restartButtonElem.addEventListener('click', function () {
-    console.log('restart')
+    console.log('restart');
+    for (let i = 1; i <= 9; i++) {
+        document.getElementById(i.toString()).innerHTML = '';
+    }
+    players = ['', ''];
     render();
 })
 
