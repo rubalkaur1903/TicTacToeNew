@@ -22,8 +22,11 @@ let currentPlayerIdx = 0;
 const changeTurn = () => {
     currentPlayerIdx = Math.abs(currentPlayerIdx-1);
 }
-const getCurrentPlayer = () => players[currentPlayerIdx];
-const winningMessage = () => `${getCurrentPlayer} has won this round!!!`
+const getCurrentPlayer = () => {
+    console.log("player: ", players[currentPlayerIdx])
+    return players[currentPlayerIdx];
+}
+const winningMessage = () => `${getCurrentPlayer()} has won this round!!!`
 
 
 // ************** DOM MANIPULATION FUNCTIONS ****************
@@ -68,7 +71,7 @@ const checkWin = () => {
         let b = winningCombination[i][1];
         let c = winningCombination[i][2];
         console.log(a, b, c)
-        if ([a] === '' || b === '' || c === '') {
+        if ([a] === '' || [b] === '' || [c] === '') {
             continue;
         } 
         if (![board[a], board[b], board[c]].includes('') && board[a] === board[b] && board[b] === board[c]) {
@@ -136,6 +139,8 @@ restartButtonElem.addEventListener('click', function () {
         document.getElementById(i.toString()).innerHTML = '';
     }
     players = ['', ''];
+    isGameActive = true;
+    gameStatusElem.innerHTML = "";
     render();
 })
 
