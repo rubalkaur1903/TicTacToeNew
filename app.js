@@ -13,10 +13,9 @@ let lastClickedIdx = -1;
 const boardElem = document.querySelectorAll('[data-cell]');
 const playerTurnElem = document.querySelector('#player-turn');
 const restartButtonElem = document.querySelector('#restart');
-const gameStatusElem = document.querySelector('.game-status')
+const gameStatusElem = document.querySelector('#game-status')
 
 
-const winningMessage = () => `${getCurrentPlayer} has won this round!!!`
 const drawMessage = () => `It's a draw!`;
 
 let currentPlayerIdx = 0;
@@ -24,6 +23,7 @@ const changeTurn = () => {
     currentPlayerIdx = Math.abs(currentPlayerIdx-1);
 }
 const getCurrentPlayer = () => players[currentPlayerIdx];
+const winningMessage = () => `${getCurrentPlayer} has won this round!!!`
 
 
 // ************** DOM MANIPULATION FUNCTIONS ****************
@@ -63,15 +63,15 @@ const checkWin = () => {
         [2, 4, 6]
     ]
     let roundWon = false;
-    for (let i = 0; i <= winningCombination.length; i++) {
+    for (let i = 0; i < winningCombination.length; i++) {
         let a = winningCombination[i][0];
         let b = winningCombination[i][1];
         let c = winningCombination[i][2];
         console.log(a, b, c)
-        if (a === '' || b === '' || c === '') {
+        if ([a] === '' || b === '' || c === '') {
             continue;
         } 
-        if ( a === b && b === c) {
+        if (![board[a], board[b], board[c]].includes('') && board[a] === board[b] && board[b] === board[c]) {
             roundWon = true;
             break;
         }
